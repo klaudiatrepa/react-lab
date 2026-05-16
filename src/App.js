@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import "milligram";
+import LoginForm from "./LoginForm";
+import UserPanel from "./UserPanel";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState("");
+
+  function login(email) {
+    setLoggedIn(email);
+  }
+
+  function logout() {
+    setLoggedIn("");
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>System do zapisów na zajęcia</h1>
+      {loggedIn
+        ? <UserPanel username={loggedIn} onLogout={logout} />
+        : <LoginForm onLogin={login} />
+      }
     </div>
   );
 }
