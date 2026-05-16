@@ -2,9 +2,10 @@ import { useState } from "react";
 import NewMeetingForm from "./NewMeetingForm";
 import MeetingsList from "./MeetingsList";
 
-export default function MeetingsPage() {
+export default function MeetingsPage({value}) {
   const [meetings, setMeetings] = useState([]);
   const [showList, setShowList] = useState(false);
+
 
   function handleNewMeeting(meeting) {
     const nextMeetings = [...meetings, meeting];
@@ -20,7 +21,7 @@ export default function MeetingsPage() {
         }}
         onAction={() => setShowList(true)}
       />
-      {showList && <MeetingsList meetings={meetings} />}
+      {showList && <MeetingsList meetings={meetings} value={value} />}
     </div>
   );
 }
