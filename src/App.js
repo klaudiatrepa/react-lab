@@ -4,6 +4,7 @@ import "milligram";
 import LoginForm from "./LoginForm";
 import UserPanel from "./UserPanel";
 
+
 function App() {
   const [loggedIn, setLoggedIn] = useState("");
 
@@ -16,7 +17,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div className="container">
       <h1>System do zapisów na zajęcia</h1>
       {loggedIn
         ? <UserPanel username={loggedIn} onLogout={logout} />
